@@ -45,7 +45,7 @@ public class Process {
             System.out.println("Amount of the product: "+amountOfProduct);
             subtotal += amountOfProduct;
 
-            productWithTax(product.get(i).getName(), site, amountOfProduct);      //計算個別product 的tax
+            productWithTax(product.get(i).getName(), site, amountOfProduct);     
             tax += productWithTax;
         }
         System.out.printf("Subtotal: %.2f\n", subtotal);
@@ -59,7 +59,7 @@ public class Process {
     public static String checkSite(Scanner keyboard){
         Boolean locationWithService = true;
         do{
-            System.out.println("Please input site of the purchase:");               //用enum check是否有分店
+            System.out.println("Please input site of the purchase:");               
             site = keyboard.nextLine();
             for(Location location: Location.values()) {
                 if (!(site.toUpperCase().equals(location.getShortCode()))) {
@@ -82,7 +82,7 @@ public class Process {
             System.out.println("Please input product name:");
             productName = keyboard.nextLine();
                 for (ProductInStock stock : ProductInStock.values()) {
-                    if (productName.toUpperCase().equals(stock.getFullName())) {       //用enum check是否有此貨
+                    if (productName.toUpperCase().equals(stock.getFullName())) {       
                         System.out.println("Product is in stock :)");
                         isProductInStock = true;
                         break;
@@ -100,7 +100,7 @@ public class Process {
         product.add(new Product(productName,price,quantity));
     }
 
-    public static Double productWithTax(String productName, String site, Double productTotal){      //用enum計tax
+    public static Double productWithTax(String productName, String site, Double productTotal){      
         for(ProductWithTaxExemption product : ProductWithTaxExemption.values()){
             if((productName.toUpperCase().equals(product.getProduct())) && (site.toUpperCase().equals(product.getLocation()))){
                 productWithTax = 0.0;
